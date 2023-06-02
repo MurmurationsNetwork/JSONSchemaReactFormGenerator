@@ -1,0 +1,69 @@
+{
+  "name": "@murmurations/jsrfg",
+  "version": "1.0.0",
+  "description": "JSON Schema React Form Generator (JSRFG)",
+  "author": "murmurations.network",
+  "license": "GPLv3",
+  "keywords": [
+    "JSON Schema",
+    "JSON",
+    "Schema",
+    "Form",
+    "Generator",
+    "Murmurations"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "test": "vitest run --config ./vitest.config.js",
+    "semantic-release": "semantic-release",
+    "prepack": "npm run build",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint-fix": "eslint --ignore-path .gitignore . --fix",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(ts|js|jsx|json)\"",
+    "format": "npm run prettier -- --write",
+    "validate": "npm run format && npm run lint  && npm run build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{ts,js,jsx,json}": [
+      "npm run format",
+      "npm run lint"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.1"
+  }
+}
