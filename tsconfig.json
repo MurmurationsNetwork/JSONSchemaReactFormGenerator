@@ -1,0 +1,10 @@
+// This file is used to configure IDE to use TypeScript automatically
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6",
+    "esModuleInterop": true,
+    "jsx": "react"
+  },
+  "exclude": ["node_modules"]
+}
