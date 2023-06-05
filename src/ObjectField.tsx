@@ -3,7 +3,7 @@ import RecursiveForm from './RecursiveForm'
 
 interface ObjectFieldProps {
   schema: any
-  profileData: any
+  profileData?: any
   parentFieldName: string
   isFieldRequired: boolean
   requiredProperties: string[]

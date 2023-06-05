@@ -6,7 +6,7 @@ import { getCurrentValue } from './utils/getCurrentValue'
 
 interface ArrayFieldProps {
   schema: any
-  profileData: any[]
+  profileData?: any[]
   parentFieldName: string
   isFieldRequired: boolean
   requiredProperties: string[]
@@ -26,8 +26,8 @@ export default function ArrayField({
   parentOnChildChange
 }: ArrayFieldProps) {
   // if the parent didn't provide profileData, we need to construct the state first
-  const [arrayData, setArrayData] = useState<any[]>(
-    profileData ? profileData : [constructState(schema?.items)]
+  const [arrayData, setArrayData] = useState(
+    profileData || [constructState(schema?.items)]
   )
 
   useEffect(() => {

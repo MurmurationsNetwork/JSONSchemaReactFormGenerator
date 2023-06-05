@@ -19,7 +19,7 @@ import MultipleEnumField from './MultipleEnumField'
 
 interface RecursiveFormProps {
   schema: any
-  profileData: any
+  profileData?: any
   parentFieldName: string
   isFieldRequired: boolean
   requiredProperties: string[]

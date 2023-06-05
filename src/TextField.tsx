@@ -4,7 +4,7 @@ import { generateNewState } from './utils/generateNewState'
 
 interface TextFieldProps {
   schema: any
-  profileData: string | undefined
+  profileData?: string
   parentFieldName: string
   isFieldRequired: boolean
   requiredProperties: string[]
@@ -23,7 +23,7 @@ export default function TextField({
   arrayPath,
   onChildChange
 }: TextFieldProps) {
-  const [inputValue, setInputValue] = useState<string>(profileData || '')
+  const [inputValue, setInputValue] = useState(profileData || '')
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
