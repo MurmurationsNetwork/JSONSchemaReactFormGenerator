@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import * as React from 'react'
 import RecursiveForm from './RecursiveForm'
 import { constructState } from './utils/constructState'
 import { generateNewState } from './utils/generateNewState'
@@ -15,7 +15,7 @@ interface ArrayFieldProps {
   parentOnChildChange?: (newArray: any[]) => void
 }
 
-export default function ArrayField({
+const ArrayField = ({
   schema,
   profileData,
   parentFieldName,
@@ -24,13 +24,13 @@ export default function ArrayField({
   parentArrayData,
   parentArrayPath,
   parentOnChildChange
-}: ArrayFieldProps) {
+}: ArrayFieldProps) => {
   // if the parent didn't provide profileData, we need to construct the state first
-  const [arrayData, setArrayData] = useState(
+  const [arrayData, setArrayData] = React.useState(
     profileData || [constructState(schema?.items)]
   )
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (parentArrayData && parentArrayPath) {
       const currentArray = getCurrentValue(parentArrayData, parentArrayPath)
 
@@ -205,3 +205,5 @@ export default function ArrayField({
     return <></>
   }
 }
+
+export default ArrayField

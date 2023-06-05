@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import ObjectField from './ObjectField'
 import TextField from './TextField'
 import DefaultField from './DefaultField'
@@ -28,7 +28,7 @@ interface RecursiveFormProps {
   onChildChange?: (newArray: any) => void
 }
 
-export default function RecursiveForm({
+const RecursiveForm = ({
   schema,
   profileData,
   parentFieldName,
@@ -37,7 +37,7 @@ export default function RecursiveForm({
   arrayData,
   arrayPath,
   onChildChange
-}: RecursiveFormProps) {
+}: RecursiveFormProps) => {
   return (
     <div>
       {schema?.type === 'object' && schema?.properties ? (
@@ -96,3 +96,5 @@ export default function RecursiveForm({
     </div>
   )
 }
+
+export default RecursiveForm

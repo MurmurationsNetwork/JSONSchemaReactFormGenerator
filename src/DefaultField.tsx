@@ -1,14 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 
 interface DefaultFieldProps {
   schema: any
   parentFieldName: string
 }
 
-export default function DefaultField({
-  schema,
-  parentFieldName
-}: DefaultFieldProps) {
+const DefaultField = ({ schema, parentFieldName }: DefaultFieldProps) => {
   return (
     <input
       type="hidden"
@@ -18,3 +15,5 @@ export default function DefaultField({
     />
   )
 }
+
+export default DefaultField

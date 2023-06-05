@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import RecursiveForm from './RecursiveForm'
 
 interface ObjectFieldProps {
@@ -12,7 +12,7 @@ interface ObjectFieldProps {
   onChildChange?: (newArray: any[]) => void
 }
 
-export default function ObjectField({
+const ObjectField = ({
   schema,
   profileData,
   parentFieldName,
@@ -21,7 +21,7 @@ export default function ObjectField({
   arrayData,
   arrayPath,
   onChildChange
-}: ObjectFieldProps) {
+}: ObjectFieldProps) => {
   /*
    * This component check the children of the object.
    * If they are string, number, array, we won't generate the object border.
@@ -89,3 +89,5 @@ export default function ObjectField({
     }
   })
 }
+
+export default ObjectField

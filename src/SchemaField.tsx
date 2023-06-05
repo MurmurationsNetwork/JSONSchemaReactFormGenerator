@@ -1,10 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 
 interface SchemaFieldProps {
   schema: any
 }
 
-export default function SchemaField({ schema }: SchemaFieldProps) {
+const SchemaField = ({ schema }: SchemaFieldProps) => {
   return (
     <input
       type="hidden"
@@ -14,3 +14,5 @@ export default function SchemaField({ schema }: SchemaFieldProps) {
     />
   )
 }
+
+export default SchemaField

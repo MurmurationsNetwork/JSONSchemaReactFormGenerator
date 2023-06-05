@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { getCurrentValue } from './utils/getCurrentValue'
 import { generateNewState } from './utils/generateNewState'
 
@@ -13,7 +13,7 @@ interface MultipleEnumFieldProps {
   onChildChange?: (newArray: any[]) => void
 }
 
-export default function MultipleEnumField({
+const MultipleEnumField = ({
   schema,
   profileData,
   parentFieldName,
@@ -22,8 +22,8 @@ export default function MultipleEnumField({
   arrayData,
   arrayPath,
   onChildChange
-}: MultipleEnumFieldProps) {
-  const [inputValue, setInputValue] = useState(profileData || [])
+}: MultipleEnumFieldProps) => {
+  const [inputValue, setInputValue] = React.useState(profileData || [])
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     // Get the selected values
@@ -84,3 +84,5 @@ export default function MultipleEnumField({
     </div>
   )
 }
+
+export default MultipleEnumField

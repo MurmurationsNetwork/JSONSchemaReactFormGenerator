@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import React from 'react'
 import { screen, render } from '@testing-library/react'
 
-import GenerateForm from '../src'
+import { GenerateForm } from '../src'
 import { schemaHeader, test_schema_1, test_schema_2 } from './test_schemas'
 
 /**

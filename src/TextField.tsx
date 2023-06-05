@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import * as React from 'react'
 import { getCurrentValue } from './utils/getCurrentValue'
 import { generateNewState } from './utils/generateNewState'
 
@@ -13,7 +13,7 @@ interface TextFieldProps {
   onChildChange?: (newArray: any) => void
 }
 
-export default function TextField({
+const TextField = ({
   schema,
   profileData,
   parentFieldName,
@@ -22,11 +22,11 @@ export default function TextField({
   arrayData,
   arrayPath,
   onChildChange
-}: TextFieldProps) {
-  const [inputValue, setInputValue] = useState(profileData || '')
+}: TextFieldProps) => {
+  const [inputValue, setInputValue] = React.useState(profileData || '')
 
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     // If the field is inherited from the parent, we need to update the parent.
     // Otherwise, we can just update the local state.
@@ -103,3 +103,5 @@ export default function TextField({
     </div>
   )
 }
+
+export default TextField
