@@ -10,18 +10,12 @@
 npm install
 ```
 
-### Publish the package
-
-```sh
-npm link
-```
-
 ### Prevent React package duplication
 
 Replace `<the-project-using-this-package>` with the path to the project using this package. You can use a relative path, for example: `../MurmurationsTools`.
 
 ```sh
-npm link <the-project-using-this-package>/node_modules/react
+npm install --no-save <the-project-using-this-package>/node_modules/react
 ```
 
 ### Build the package
@@ -33,7 +27,7 @@ npm run build
 ### Use package in another project (run command in that project's directory)
 
 ```sh
-npm link @murmurations/jsrfg
+npm install --no-save ../JSONSchemaReactFormGenerator
 ```
 
 ## Reference
