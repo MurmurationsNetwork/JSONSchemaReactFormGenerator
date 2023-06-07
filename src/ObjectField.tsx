@@ -55,16 +55,16 @@ const ObjectField = ({
     } else if (schema?.properties[property]?.properties) {
       return (
         <div key={parentFieldName + '.' + property}>
-          <fieldset className="my-4 border-4 border-dotted border-slate-300 p-4">
-            <legend className="text-md mt-2 block font-bold">
+          <fieldset className="jsrfg-object-block">
+            <legend className="jsrfg-title">
               {schema?.properties[property]?.title}
               {requiredProperties?.includes(property) ? (
-                <span className="text-red-500 dark:text-red-400"> *</span>
+                <span className="jsrfg-required"> *</span>
               ) : (
                 <></>
               )}
             </legend>
-            <div className="text-xs">
+            <div className="jsrfg-description">
               {schema?.properties[property]?.description}
             </div>
             <RecursiveForm

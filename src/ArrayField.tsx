@@ -108,16 +108,16 @@ const ArrayField = ({
   // Otherwise, it will render nothing
   if (schema?.items?.type === 'object') {
     return (
-      <fieldset className="my-4 border-4 border-dotted border-slate-300 p-4">
-        <legend className="text-md block font-bold">
+      <fieldset className="jsrfg-object-block">
+        <legend className="jsrfg-title">
           {schema?.title}
           {requiredProperties?.includes(parentFieldName) ? (
-            <span className="text-red-500 dark:text-red-400"> *</span>
+            <span className="jsrfg-required"> *</span>
           ) : (
             <></>
           )}
         </legend>
-        <div className="mb-4 block text-sm">{schema?.description}</div>
+        <div className="jsrfg-description">{schema?.description}</div>
         {arrayData.map((value, index) => (
           <div key={parentFieldName + '[' + index + ']'}>
             <RecursiveForm
@@ -135,7 +135,7 @@ const ArrayField = ({
             ) : (
               <button
                 onClick={event => handleRemove(event, index)}
-                className="my-4 rounded-full bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-400 dark:bg-green-200 dark:text-gray-800 dark:hover:bg-green-100"
+                className="jsrfg-remove-btn"
               >
                 Remove
               </button>
@@ -144,7 +144,7 @@ const ArrayField = ({
         ))}
         <button
           onClick={event => handleAdd(event, schema)}
-          className="my-4 rounded-full bg-red-500 px-4 py-2 font-bold text-white hover:scale-110 hover:bg-red-400 dark:bg-purple-200 dark:text-gray-800 dark:hover:bg-purple-100"
+          className="jsrfg-add-btn"
         >
           Add
         </button>
@@ -155,25 +155,25 @@ const ArrayField = ({
     schema?.items?.type === 'number'
   ) {
     return (
-      <fieldset className="my-4 border-4 border-dotted border-slate-300 p-4">
-        <legend className="text-md block font-bold">
+      <fieldset className="jsrfg-object-block">
+        <legend className="jsrfg-title">
           {schema?.title}
           {requiredProperties?.includes(parentFieldName) ? (
-            <span className="text-red-500 dark:text-red-400"> *</span>
+            <span className="jsrfg-required"> *</span>
           ) : (
             <></>
           )}
         </legend>
-        <div className="mb-4 block text-sm">{schema?.description}</div>
+        <div className="jsrfg-description">{schema?.description}</div>
         {arrayData.map((value, index) => (
-          <div key={index} className="flex items-center justify-around">
+          <div key={index} className="jsrfg-array-block">
             <input
               type={schema?.items?.type === 'number' ? 'number' : 'text'}
               value={value}
               name={parentFieldName + '[' + index + ']'}
               aria-label={parentFieldName + '[' + index + ']'}
               onChange={event => handleChange(event, index)}
-              className="form-input mr-2 w-full dark:bg-gray-700 focus:dark:bg-gray-500"
+              className="jsrfg-array-input"
               required={isFieldRequired}
               min={schema?.minimum}
               max={schema?.maximum}
@@ -186,7 +186,7 @@ const ArrayField = ({
             ) : (
               <button
                 onClick={event => handleRemove(event, index)}
-                className="my-4 rounded-full bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-400 dark:bg-green-200 dark:text-gray-800 dark:hover:bg-green-100"
+                className="jsrfg-remove-btn"
               >
                 Remove
               </button>
@@ -195,7 +195,7 @@ const ArrayField = ({
         ))}
         <button
           onClick={event => handleAdd(event, schema)}
-          className="my-4 rounded-full bg-red-500 px-4 py-2 font-bold text-white hover:scale-110 hover:bg-red-400 dark:bg-purple-200 dark:text-gray-800 dark:hover:bg-purple-100"
+          className="jsrfg-add-btn"
         >
           Add
         </button>

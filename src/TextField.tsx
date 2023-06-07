@@ -46,20 +46,20 @@ const TextField = ({
   // Otherwise, we can just use the local state.
   return (
     <div>
-      <legend className="text-md mt-4 block font-bold">
+      <legend className="jsrfg-title">
         {schema?.title}:
         {requiredProperties?.includes(
           parentFieldName.split('.').pop() || ''
         ) ? (
-          <span className="text-red-500 dark:text-red-400"> *</span>
+          <span className="jsrfg-required"> *</span>
         ) : (
           <></>
         )}
       </legend>
-      <div className="my-2 block text-sm">
+      <div className="jsrfg-enum-block">
         {schema?.enum ? (
           <select
-            className="form-select mt-2 w-full text-ellipsis dark:bg-gray-700"
+            className="jsrfg-enum-select"
             aria-label={parentFieldName}
             name={parentFieldName}
             required={isFieldRequired}
@@ -79,7 +79,7 @@ const TextField = ({
           </select>
         ) : (
           <input
-            className="form-input w-full dark:bg-gray-700 focus:dark:bg-gray-500"
+            className="jsrfg-array-input"
             type={schema?.type === 'string' ? 'text' : 'number'}
             value={
               arrayData && arrayPath

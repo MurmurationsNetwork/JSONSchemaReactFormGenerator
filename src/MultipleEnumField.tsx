@@ -49,17 +49,17 @@ const MultipleEnumField = ({
   // Otherwise, we can just use the local state.
   return (
     <div>
-      <legend className="text-md mt-4 block font-bold">
+      <legend className="jsrfg-title">
         {schema?.title}:
         {requiredProperties?.includes(parentFieldName) ? (
-          <span className="text-red-500 dark:text-red-400"> *</span>
+          <span className="jsrfg-required"> *</span>
         ) : (
           <></>
         )}
       </legend>
-      <div className="my-2 block text-sm">
+      <div className="jsrfg-enum-block">
         <select
-          className="form-select mt-2 w-full text-ellipsis dark:bg-gray-700"
+          className="jsrfg-enum-select"
           aria-label={parentFieldName}
           name={parentFieldName + '[]'}
           required={isFieldRequired}
@@ -79,7 +79,7 @@ const MultipleEnumField = ({
             </option>
           ))}
         </select>
-        <div className="mt-2 text-xs">{schema?.description}</div>
+        <div className="jsrfg-description">{schema?.description}</div>
       </div>
     </div>
   )
