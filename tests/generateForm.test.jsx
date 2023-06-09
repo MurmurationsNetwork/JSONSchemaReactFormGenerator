@@ -4,6 +4,7 @@ import { screen, render } from '@testing-library/react'
 
 import { GenerateForm } from '../src'
 import {
+  karte_von_morgen,
   schemaHeader,
   test_schema_1,
   test_schema_2,
@@ -172,5 +173,80 @@ describe('GenerateForm mock-test schemas', () => {
     )
     expect(multipleOptions).toHaveLength(5)
     expect(multipleOptions[0]).toHaveValue('one')
+  })
+})
+
+describe('GenerateForm real schema', () => {
+  it('should render the fields in karte_von_morgen schema', () => {
+    const { container } = render(<GenerateForm schema={karte_von_morgen} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the name input exists and is required
+    const name = container.querySelector('input[name="name"]')
+    expect(name).toBeInTheDocument()
+    expect(name).toBeRequired()
+
+    // Assert that the primary_url input exists, the maxLength is 2000 and is required
+    const primaryUrl = container.querySelector('input[name="primary_url"]')
+    expect(primaryUrl).toBeInTheDocument()
+    expect(primaryUrl).toHaveAttribute('maxlength', '2000')
+    expect(primaryUrl).toBeRequired()
+
+    // Assert that the description input exists
+    expect(
+      container.querySelector('input[name="description"]')
+    ).toBeInTheDocument()
+
+    // Assert that the latitude input exists, type is number, min is -90 and max is 90
+    const latitude = container.querySelector('input[name="latitude"]')
+    expect(latitude).toBeInTheDocument()
+    expect(latitude).toHaveAttribute('type', 'number')
+    expect(latitude).toHaveAttribute('min', '-90')
+    expect(latitude).toHaveAttribute('max', '90')
+
+    // Assert that the longitude input exists, type is number, min is -180 and max is 180
+    const longitude = container.querySelector('input[name="longitude"]')
+    expect(longitude).toBeInTheDocument()
+    expect(longitude).toHaveAttribute('type', 'number')
+    expect(longitude).toHaveAttribute('min', '-180')
+    expect(longitude).toHaveAttribute('max', '180')
+
+    // Assert that the locality input exists
+    expect(
+      container.querySelector('input[name="locality"]')
+    ).toBeInTheDocument()
+
+    // Assert that the region input exists
+    expect(container.querySelector('input[name="region"]')).toBeInTheDocument()
+
+    // Assert that the country_name input exists
+    expect(
+      container.querySelector('input[name="country_name"]')
+    ).toBeInTheDocument()
+
+    // Assert that the email input exists
+    expect(container.querySelector('input[name="email"]')).toBeInTheDocument()
+
+    // Assert that the image input exists, maxlength is 2000 and pattern is ^https?://.*
+    const image = container.querySelector('input[name="image"]')
+    expect(image).toBeInTheDocument()
+    expect(image).toHaveAttribute('maxlength', '2000')
+    expect(image).toHaveAttribute('pattern', '^https?://.*')
+
+    // Assert that the kvm_category[0] input exists
+    expect(
+      container.querySelector('input[name="kvm_category[0]"]')
+    ).toBeInTheDocument()
+
+    // Assert that the tags[0] input exists
+    expect(container.querySelector('input[name="tags[0]"]')).toBeInTheDocument()
+
+    // Assert that add button and remove button exists
+    expect(container.querySelector('.jsrfg-add-btn')).toBeInTheDocument()
+    expect(container.querySelector('.jsrfg-remove-btn')).toBeInTheDocument()
   })
 })
