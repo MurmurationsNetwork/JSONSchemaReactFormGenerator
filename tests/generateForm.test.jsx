@@ -8,47 +8,62 @@ import { schemaHeader, test_schema_1, test_schema_2 } from './test_schemas'
 /**
  * @vitest-environment jsdom
  */
-
-describe('generateForm tests', () => {
-  it('Schema with no properties should return empty content', () => {
+describe('GenerateForm mock-test schemas', () => {
+  it('should return empty content if the schema with no properties', () => {
     const { container } = render(<GenerateForm schema={schemaHeader} />)
 
-    expect(container.innerHTML).toEqual('')
-  })
-})
-
-describe('render form tests', () => {
-  it('Should render string and number input fields', () => {
-    render(<GenerateForm schema={test_schema_1} />)
-
-    expect(
-      screen.getByRole('textbox', { name: /name/i, type: /string/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('spinbutton', {
-        name: /geolocation.lat/i,
-        type: /number/i
-      })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('spinbutton', {
-        name: /geolocation.lon/i,
-        type: /number/i
-      })
-    ).toBeInTheDocument()
+    expect(container).toBeEmptyDOMElement()
   })
 
-  it('Should render input fields from object and Add button for array', () => {
-    render(<GenerateForm schema={test_schema_2} />)
+  it('should render string and number input fields', () => {
+    const { container } = render(<GenerateForm schema={test_schema_1} />)
 
+    // Assert that the linked_schemas input exists
     expect(
-      screen.getByRole('textbox', { name: /urls\[0].name/i, type: /string/i })
+      container.querySelector('input[name="linked_schemas"]')
     ).toBeInTheDocument()
+
+    // Assert that the name input exists
+    expect(container.querySelector('input[name="name"]')).toBeInTheDocument()
+
+    const lat = container.querySelector('input[name="geolocation.lat"]')
+    const lon = container.querySelector('input[name="geolocation.lon"]')
+
+    // Assert that the lat and the lon inputs exist
+    expect(lat).toBeInTheDocument()
+    expect(lon).toBeInTheDocument()
+
+    // Assert that the lat and the lon inputs are of type number
+    expect(lat).toHaveAttribute('type', 'number')
+    expect(lon).toHaveAttribute('type', 'number')
+
+    // Assert that the lat and the lon inputs are required
+    expect(lat).toBeRequired()
+    expect(lon).toBeRequired()
+  })
+
+  it('should render input fields from object and add button for array', () => {
+    const { container } = render(<GenerateForm schema={test_schema_2} />)
+
+    // Assert that the linked_schemas input exists
     expect(
-      screen.getByRole('textbox', { name: /urls\[0].url/i, type: /string/i })
+      container.querySelector('input[name="linked_schemas"]')
     ).toBeInTheDocument()
-    expect(
-      screen.getByRole('button', { name: /add/i, type: /button/i })
-    ).toBeInTheDocument()
+
+    // Assert that the name input exists
+    expect(container.querySelector('input[name="name"]')).toBeInTheDocument()
+
+    // Assert that the urls input exists and the length is 2
+    expect(container.querySelectorAll('input[name^="urls[0]"]')).toHaveLength(2)
+
+    // Assert that the urls[0].url has pattern attribute
+    const urlInput = container.querySelector('input[name^="urls[0].url"]')
+    expect(urlInput).toBeInTheDocument()
+    expect(urlInput).toHaveAttribute('type', 'text')
+    expect(urlInput).toHaveAttribute('pattern', '^https?://.*')
+
+    // Assert that Add button exists
+    const addButton = container.querySelector('.jsrfg-add-btn')
+    expect(addButton).toBeInTheDocument()
   })
 })
