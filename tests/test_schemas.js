@@ -163,6 +163,255 @@ export const test_schema_5 = {
   metadata: metadata
 }
 
+// Arr->Obj->Str,Obj->Str,Num
+export const test_schema_6 = {
+  ...schemaHeader,
+  properties: {
+    linked_schemas: linked_schemas,
+    aososn: {
+      title: 'Arr->Obj->Str,Obj->Str,Num',
+      description: 'Array of objects with a string and an object inside.',
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          some_string: {
+            title: 'String',
+            description: 'A string.',
+            type: 'string'
+          },
+          some_obj: {
+            title: 'Object',
+            description: 'An object.',
+            type: 'object',
+            properties: {
+              another_string: {
+                title: 'String2',
+                description: 'Another string.',
+                type: 'string'
+              },
+              some_number: {
+                title: 'Number',
+                description: 'A number.',
+                type: 'number'
+              }
+            },
+            required: ['another_string']
+          }
+        },
+        required: ['some_string', 'some_obj']
+      }
+    }
+  },
+  required: ['linked_schemas'],
+  metadata: metadata
+}
+
+// Obj->Str,Obj->Str,Num
+export const test_schema_7 = {
+  ...schemaHeader,
+  properties: {
+    linked_schemas: linked_schemas,
+    ososn: {
+      title: 'Obj->Str,Obj->Str,Num',
+      description: 'An object with a string and an object inside.',
+      type: 'object',
+      properties: {
+        some_string: {
+          title: 'String',
+          description: 'A string.',
+          type: 'string'
+        },
+        some_obj: {
+          title: 'Object',
+          description: 'An object.',
+          type: 'object',
+          properties: {
+            another_string: {
+              title: 'String2',
+              description: 'Another string.',
+              type: 'string'
+            },
+            some_number: {
+              title: 'Number',
+              description: 'A number.',
+              type: 'number'
+            }
+          },
+          required: ['another_string']
+        }
+      },
+      required: ['some_string', 'some_obj']
+    }
+  },
+  required: ['linked_schemas'],
+  metadata: metadata
+}
+
+// Obj->Arr->Obj->Str,Num
+export const test_schema_8 = {
+  ...schemaHeader,
+  properties: {
+    linked_schemas: linked_schemas,
+    oaosn: {
+      title: 'Obj->Arr->Obj->Str,Num',
+      description: 'An object with an array of objects with string and number.',
+      type: 'object',
+      properties: {
+        some_arr: {
+          title: 'Some Array',
+          description: 'An array of objects with string and number.',
+          type: 'array',
+          items: {
+            type: 'object',
+            title: 'Some Object',
+            description: 'An object with a string and number.',
+            properties: {
+              some_string: {
+                title: 'String',
+                description: 'A string.',
+                type: 'string'
+              },
+              some_number: {
+                title: 'Number',
+                description: 'A number.',
+                type: 'number'
+              }
+            },
+            required: ['some_string']
+          }
+        }
+      }
+    }
+  },
+  required: ['linked_schemas'],
+  metadata: metadata
+}
+
+// Obj->Str,Obj->Str,Obj->Str,Num
+export const test_schema_9 = {
+  ...schemaHeader,
+  properties: {
+    linked_schemas: linked_schemas,
+    osososn: {
+      title: 'Obj->Str,Obj->Str,Obj->Str,Num',
+      description:
+        'An object with an object with a string and object with string and number.',
+      type: 'object',
+      properties: {
+        a_string: {
+          title: 'String',
+          description: 'A string.',
+          type: 'string'
+        },
+        obj2: {
+          title: 'Obj2',
+          type: 'object',
+          properties: {
+            b_string: {
+              title: 'String',
+              description: 'A string.',
+              type: 'string'
+            },
+            obj3: {
+              title: 'Some Object',
+              description: 'An object.',
+              type: 'object',
+              properties: {
+                c_string: {
+                  title: 'String',
+                  description: 'A string.',
+                  type: 'string'
+                },
+                a_number: {
+                  title: 'Number',
+                  description: 'A number.',
+                  type: 'number'
+                }
+              },
+              required: ['c_string']
+            }
+          },
+          required: ['obj3']
+        }
+      }
+    }
+  },
+  required: ['linked_schemas'],
+  metadata: metadata
+}
+
+// Arr->Obj->Arr->Str
+export const test_schema_10 = {
+  ...schemaHeader,
+
+  properties: {
+    linked_schemas: linked_schemas,
+    aoas: {
+      title: 'Arr->Obj->Arr->Str',
+      description: 'An array with an object with an array of strings.',
+      type: 'array',
+      items: {
+        title: 'An object',
+        description: 'An object with an array of strings.',
+        type: 'object',
+        properties: {
+          another_arr: {
+            title: 'Another array',
+            description: 'An array of strings.',
+            type: 'array',
+            items: {
+              title: 'A string',
+              description: 'A string.',
+              type: 'string'
+            }
+          }
+        }
+      }
+    }
+  },
+  required: ['linked_schemas'],
+  metadata: metadata
+}
+
+// Obj->Arr->Obj->Arr->Str
+export const test_schema_11 = {
+  ...schemaHeader,
+
+  properties: {
+    linked_schemas: linked_schemas,
+    oaoas: {
+      title: 'Obj->Arr->Obj->Arr->Str',
+      description: 'An array with an object with an array of strings.',
+      type: 'object',
+      properties: {
+        aoas: {
+          type: 'array',
+          items: {
+            title: 'An object',
+            description: 'An object with an array of strings.',
+            type: 'object',
+            properties: {
+              another_arr: {
+                title: 'Another array',
+                description: 'An array of strings.',
+                type: 'array',
+                items: {
+                  title: 'A string',
+                  description: 'A string.',
+                  type: 'string'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  required: ['linked_schemas', 'oaoas'],
+  metadata: metadata
+}
+
 export const karte_von_morgen = {
   ...schemaHeader,
   properties: {
@@ -386,15 +635,5 @@ export const karte_von_morgen = {
     }
   },
   required: ['linked_schemas', 'name', 'primary_url'],
-  metadata: {
-    creator: {
-      name: 'Karte von Morgen',
-      url: 'https://www.kartevonmorgen.org'
-    },
-    schema: {
-      name: 'karte_von_morgen-v1.0.0',
-      purpose:
-        'Entries (Initiatives, Organisations, Companies) from Kartevonmorgen.org'
-    }
-  }
+  metadata: metadata
 }

@@ -7,10 +7,16 @@ import {
   karte_von_morgen,
   schemaHeader,
   test_schema_1,
+  test_schema_10,
+  test_schema_11,
   test_schema_2,
   test_schema_3,
   test_schema_4,
-  test_schema_5
+  test_schema_5,
+  test_schema_6,
+  test_schema_7,
+  test_schema_8,
+  test_schema_9
 } from './test_schemas'
 
 /**
@@ -173,6 +179,148 @@ describe('GenerateForm mock-test schemas', () => {
     )
     expect(multipleOptions).toHaveLength(5)
     expect(multipleOptions[0]).toHaveValue('one')
+  })
+
+  it('should render the fields in Arr->Obj->Str,Obj->Str,Num', () => {
+    const { container } = render(<GenerateForm schema={test_schema_6} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the aososn[0].some_string input exists
+    const someString = container.querySelector(
+      'input[name="aososn[0].some_string"]'
+    )
+    expect(someString).toBeInTheDocument()
+
+    // Assert that the aososn[0].some_obj.another_string input exists
+    const anotherString = container.querySelector(
+      'input[name="aososn[0].some_obj.another_string"]'
+    )
+    expect(anotherString).toBeInTheDocument()
+
+    // Assert that the aososn[0].some_obj.some_number input exists and type is number
+    const someNumber = container.querySelector(
+      'input[name="aososn[0].some_obj.some_number"]'
+    )
+    expect(someNumber).toBeInTheDocument()
+    expect(someNumber).toHaveAttribute('type', 'number')
+  })
+
+  it('should render the fields in Obj->Str,Obj->Str,Num', () => {
+    const { container } = render(<GenerateForm schema={test_schema_7} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the ososn.some_string input exists
+    expect(
+      container.querySelector('input[name="ososn.some_string"]')
+    ).toBeInTheDocument()
+
+    // Assert that the ososn.some_obj.another_string input exists
+    expect(
+      container.querySelector('input[name="ososn.some_obj.another_string"]')
+    ).toBeInTheDocument()
+
+    // Assert that the ososn.some_obj.some_number input exists and type is number
+    const someNumber = container.querySelector(
+      'input[name="ososn.some_obj.some_number"]'
+    )
+    expect(someNumber).toBeInTheDocument()
+    expect(someNumber).toHaveAttribute('type', 'number')
+  })
+
+  it('should render the fields in Obj->Arr->Obj->Str,Num', () => {
+    const { container } = render(<GenerateForm schema={test_schema_8} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the oaosn.some_arr[0].some_string input exists
+    expect(
+      container.querySelector('input[name="oaosn.some_arr[0].some_string"]')
+    ).toBeInTheDocument()
+
+    // Assert that the oaosn.some_arr[0].some_number input exists and type is number
+    const someNumber = container.querySelector(
+      'input[name="oaosn.some_arr[0].some_number"]'
+    )
+    expect(someNumber).toBeInTheDocument()
+    expect(someNumber).toHaveAttribute('type', 'number')
+  })
+
+  it('should render the fields in Obj->Str,Obj->Str,Obj->Str,Num', () => {
+    const { container } = render(<GenerateForm schema={test_schema_9} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the osososn.a_string input exists
+    expect(
+      container.querySelector('input[name="osososn.a_string"]')
+    ).toBeInTheDocument()
+
+    // Assert that the osososn.obj2.b_string input exists
+    expect(
+      container.querySelector('input[name="osososn.obj2.b_string"]')
+    ).toBeInTheDocument()
+
+    // Assert that the osososn.obj2.obj3.c_string input exists
+    expect(
+      container.querySelector('input[name="osososn.obj2.obj3.c_string"]')
+    ).toBeInTheDocument()
+
+    // Assert that the osososn.obj2.obj3.a_number input exists and type is number
+    const someNumber = container.querySelector(
+      'input[name="osososn.obj2.obj3.a_number"]'
+    )
+    expect(someNumber).toBeInTheDocument()
+    expect(someNumber).toHaveAttribute('type', 'number')
+  })
+
+  it('should render the fields in Arr->Obj->Arr->Str', () => {
+    const { container } = render(<GenerateForm schema={test_schema_10} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the aoas[0].another_arr[0] input exists
+    expect(
+      container.querySelector('input[name="aoas[0].another_arr[0]"]')
+    ).toBeInTheDocument()
+
+    // Assert that add button and remove button exists
+    expect(container.querySelector('.jsrfg-add-btn')).toBeInTheDocument()
+    expect(container.querySelector('.jsrfg-remove-btn')).toBeInTheDocument()
+  })
+
+  it('should render the fields in Obj->Arr->Obj->Arr->Str', () => {
+    const { container } = render(<GenerateForm schema={test_schema_11} />)
+
+    // Assert that the linked_schemas input exists
+    expect(
+      container.querySelector('input[name="linked_schemas"]')
+    ).toBeInTheDocument()
+
+    // Assert that the oaoas.aoas[0].another_arr[0] input exists
+    expect(
+      container.querySelector('input[name="oaoas.aoas[0].another_arr[0]"]')
+    ).toBeInTheDocument()
+
+    // Assert that add button and remove button exists
+    expect(container.querySelector('.jsrfg-add-btn')).toBeInTheDocument()
+    expect(container.querySelector('.jsrfg-remove-btn')).toBeInTheDocument()
   })
 })
 
