@@ -2,7 +2,15 @@
 
 > This project is licensed under the terms of the GNU General Public License v3.0
 
-## Customize css with tailwindcss
+## Installation
+
+Using npm:
+
+```sh
+npm install @murmurations/jsrfg
+```
+
+## Setup css and customize css with tailwindcss
 
 ```css
 @layer components {
@@ -39,6 +47,58 @@
 }
 ```
 
+## Examples
+
+### Basic Usage
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { generateForm } from '@murmurations/jsrfg'
+
+const schema = {
+  // Schema definition
+}
+
+const App = () => {
+  return (
+    <div>
+      <h1>Form Generator Example</h1>
+      <FormGenerator schema={schema} />
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+### Providing Profile Data
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import FormGenerator from 'your-package-name';
+
+const schema = {
+  // Schema definition
+}
+
+const profileData = {
+  // Profile data in JSON format
+}
+
+const App = () => {
+  return (
+    <div>
+      <h1>Form Generator Example</h1>
+      <FormGenerator schema={schema} profileData={profileData} />
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
 ## Local Development
 
 ### Install dependencies
@@ -65,6 +125,12 @@ npm run build
 
 ```sh
 npm install --no-save ../JSONSchemaReactFormGenerator
+```
+
+### Install latest pre-release version in another project (run command in that project's directory)
+
+```sh
+npm install @murmurations/jsrfg@pre
 ```
 
 ## Reference
