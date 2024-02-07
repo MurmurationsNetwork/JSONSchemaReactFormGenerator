@@ -1,6 +1,6 @@
 {
   "name": "@murmurations/jsrfg",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JSON Schema React Form Generator (JSRFG)",
   "author": "murmurations.network",
   "license": "GPLv3",
@@ -51,20 +51,20 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.1.5",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
     "@types/jsdom": "^21.1.6",
-    "@types/react": "^18.2.45",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@types/react": "^18.2.55",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "husky": "^8.0.3",
-    "jsdom": "^23.0.1",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.10",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3",
-    "vitest": "^1.0.4"
+    "vitest": "^1.2.2"
   },
   "dependencies": {
     "react": "^18.2.0",
