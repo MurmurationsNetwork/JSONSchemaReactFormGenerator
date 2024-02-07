@@ -1,6 +1,6 @@
 {
   "name": "@murmurations/jsrfg",
-  "version": "1.0.4-pre.0",
+  "version": "1.0.4",
   "description": "JSON Schema React Form Generator (JSRFG)",
   "author": "murmurations.network",
   "license": "GPLv3",
