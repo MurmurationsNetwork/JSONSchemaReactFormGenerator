@@ -33,7 +33,7 @@
   "scripts": {
     "clean": "rm -rf ./lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p ./configs/tsconfig.esm.json && find ./lib/esm -name '*.js' -exec sh -c 'mv \"$1\" \"${1%.js}.mjs\"' _ {} \\; && find ./lib/esm -name '*.d.ts' -exec sh -c 'mv \"$1\" \"${1%.d.ts}.d.mts\"' _ {} \\;",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv ./lib/esm/index.js ./lib/esm/index.mjs && mv ./lib/esm/types/index.d.ts ./lib/esm/types/index.d.mts",
     "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
     "test": "vitest run --config ./vitest.config.js",
     "semantic-release": "semantic-release",
