@@ -1,6 +1,6 @@
 {
   "name": "@murmurations/jsrfg",
-  "type": "module",
+  "type": "commonjs",
   "version": "1.0.6-pre.2",
   "description": "JSON Schema React Form Generator (JSRFG)",
   "author": "murmurations.network",
@@ -16,25 +16,25 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/esm/types/index.d.mts",
-        "default": "./lib/esm/index.mjs"
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.js"
       },
       "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
+        "types": "./lib/cjs/types/index.d.cts",
+        "default": "./lib/cjs/index.cjs"
       }
     }
   },
-  "types": "./lib/cjs/types/index.d.ts",
-  "main": "./lib/cjs/index.js",
+  "types": "./lib/cjs/types/index.d.cts",
+  "main": "./lib/cjs/index.cjs",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
     "clean": "rm -rf ./lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p ./configs/tsconfig.esm.json && mv ./lib/esm/index.js ./lib/esm/index.mjs && mv ./lib/esm/types/index.d.ts ./lib/esm/types/index.d.mts",
-    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json && mv ./lib/cjs/index.js ./lib/cjs/index.cjs && mv ./lib/cjs/types/index.d.ts ./lib/cjs/types/index.d.cts",
     "test": "vitest run --config ./vitest.config.js",
     "semantic-release": "semantic-release",
     "prepack": "npm run build",
