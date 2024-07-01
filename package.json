@@ -1,6 +1,7 @@
 {
   "name": "@murmurations/jsrfg",
-  "version": "1.0.5",
+  "type": "module",
+  "version": "1.0.6-pre.4",
   "description": "JSON Schema React Form Generator (JSRFG)",
   "author": "murmurations.network",
   "license": "GPLv3",
@@ -15,25 +16,23 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.js"
+        "types": "./lib/esm/types/index.d.mts",
+        "default": "./lib/esm/index.mjs"
       },
       "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
+        "types": "./lib/cjs/types/index.d.cts",
+        "default": "./lib/cjs/index.cjs"
       }
     }
   },
-  "types": "./lib/cjs/types/index.d.ts",
-  "main": "./lib/cjs/index.js",
+  "types": "./lib/esm/types/index.d.mts",
+  "main": "./lib/esm/index.mjs",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p ./configs/tsconfig.esm.json",
-    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "build": "npm run clean && rollup -c && node rename-types.js",
     "test": "vitest run --config ./vitest.config.js",
     "semantic-release": "semantic-release",
     "prepack": "npm run build",
@@ -51,6 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.2",
     "@types/jsdom": "^21.1.6",
@@ -64,7 +66,8 @@
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
+    "rollup": "^4.18.0",
+    "typescript": "^5.5.2",
     "vitest": "^1.5.0"
   },
   "dependencies": {
