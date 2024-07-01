@@ -16,23 +16,20 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/esm/types/index.d.mts",
         "default": "./lib/esm/index.mjs"
       },
       "require": {
-        "types": "./lib/cjs/types/index.d.cts",
         "default": "./lib/cjs/index.cjs"
       }
     }
   },
-  "types": "./lib/esm/types/index.d.mts",
   "main": "./lib/esm/index.mjs",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
     "clean": "rm -rf ./lib",
-    "build": "npm run clean && rollup -c && node rename-types.js",
+    "build": "npm run clean && rollup -c",
     "test": "vitest run --config ./vitest.config.js",
     "semantic-release": "semantic-release",
     "prepack": "npm run build",
@@ -52,6 +49,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.2",

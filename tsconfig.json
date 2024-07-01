@@ -9,8 +9,7 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "lib",
-    "declaration": true
+    "outDir": "lib"
   },
   "include": ["src/**/*"]
 }

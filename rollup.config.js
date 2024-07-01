@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 
 export default [
@@ -7,14 +8,14 @@ export default [
     input: 'src/index.tsx',
     output: {
       file: 'lib/esm/index.mjs',
-      format: 'esm'
+      format: 'es'
     },
     plugins: [
       resolve(),
       commonjs(),
+      terser(),
       typescript({
-        tsconfig: './tsconfig.json',
-        declarationDir: './lib/esm/types'
+        tsconfig: './tsconfig.json'
       })
     ]
   },
@@ -27,9 +28,9 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
+      terser(),
       typescript({
-        tsconfig: './tsconfig.json',
-        declarationDir: './lib/cjs/types'
+        tsconfig: './tsconfig.json'
       })
     ]
   }
