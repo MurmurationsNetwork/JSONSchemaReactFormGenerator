@@ -25,8 +25,8 @@
       }
     }
   },
-  "types": "./lib/cjs/types/index.d.mts",
-  "main": "./lib/cjs/index.mjs",
+  "types": "./lib/esm/types/index.d.mts",
+  "main": "./lib/esm/index.mjs",
   "files": [
     "lib/**/*"
   ],
