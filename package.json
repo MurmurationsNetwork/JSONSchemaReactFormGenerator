@@ -1,6 +1,7 @@
 {
   "name": "@murmurations/jsrfg",
-  "version": "1.0.5",
+  "type": "module",
+  "version": "1.0.6",
   "description": "JSON Schema React Form Generator (JSRFG)",
   "author": "murmurations.network",
   "license": "GPLv3",
@@ -12,28 +13,18 @@
     "Generator",
     "Murmurations"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/esm/types/index.d.ts",
-        "default": "./lib/esm/index.js"
-      },
-      "require": {
-        "types": "./lib/cjs/types/index.d.ts",
-        "default": "./lib/cjs/index.js"
-      }
-    }
+    ".": "./dist/index.js"
   },
-  "types": "./lib/cjs/types/index.d.ts",
-  "main": "./lib/cjs/index.js",
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "scripts": {
-    "clean": "rm -rf ./lib",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc -p ./configs/tsconfig.esm.json",
-    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && npm run build:esm",
+    "build:esm": "tsc -p tsconfig.json",
     "test": "vitest run --config ./vitest.config.js",
     "semantic-release": "semantic-release",
     "prepack": "npm run build",
@@ -64,7 +55,7 @@
     "jsdom": "^24.0.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.3",
     "vitest": "^1.5.0"
   },
   "dependencies": {

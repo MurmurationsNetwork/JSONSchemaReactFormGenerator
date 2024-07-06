@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import RecursiveForm from './RecursiveForm'
 import { constructState } from './utils/constructState'
 import { generateNewState } from './utils/generateNewState'
